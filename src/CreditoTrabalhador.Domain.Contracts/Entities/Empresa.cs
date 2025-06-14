@@ -1,8 +1,7 @@
-﻿namespace CreditoTrabalhador.Domain.Contracts.Entities
-{
-    public class Empresa : EmpresaBase
-    {
+﻿namespace CreditoTrabalhador.Domain.Contracts.Entities;
 
-        public ICollection<Filial> Filiais { get; set; } = new List<Filial>();
-    }
+public class Empresa : EmpresaBase
+{
+
+    public ICollection<Filial> Filiais { get; set; } = new List<Filial>();
 }

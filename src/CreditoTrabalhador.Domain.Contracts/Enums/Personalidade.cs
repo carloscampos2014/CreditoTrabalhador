@@ -1,8 +1,7 @@
-﻿namespace CreditoTrabalhador.Domain.Contracts.Enums
+﻿namespace CreditoTrabalhador.Domain.Contracts.Enums;
+
+public enum Personalidade
 {
-    public enum Personalidade
-    {
-        PessoaFisica = 0,
-        PessoaJuridica = 1,
-    }
+    PessoaFisica = 0,
+    PessoaJuridica = 1,
 }
