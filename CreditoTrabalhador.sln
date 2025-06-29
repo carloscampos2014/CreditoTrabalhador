@@ -1,11 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36203.30 d17.14
+VisualStudioVersion = 17.14.36203.30
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		.github\workflows\ci.yml = .github\workflows\ci.yml
 		.github\pull_request_template.md = .github\pull_request_template.md
 		Readme.md = Readme.md
 	EndProjectSection
@@ -40,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditoTrabalhador.Domain.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditoTrabalhador.Domain.Core.Test", "tests\CreditoTrabalhador.Domain.Core.Test\CreditoTrabalhador.Domain.Core.Test.csproj", "{D96CCC70-E50E-441C-8AC6-681C48DB025F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditoTrabalhador.Infra.DataBase.SqLite.Test", "tests\CreditoTrabalhador.Infra.DataBase.SqLite.Test\CreditoTrabalhador.Infra.DataBase.SqLite.Test.csproj", "{EEA5B680-A2A5-49E6-B62B-6E7446ACDDD7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +65,10 @@ Global
 		{D96CCC70-E50E-441C-8AC6-681C48DB025F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D96CCC70-E50E-441C-8AC6-681C48DB025F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D96CCC70-E50E-441C-8AC6-681C48DB025F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEA5B680-A2A5-49E6-B62B-6E7446ACDDD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEA5B680-A2A5-49E6-B62B-6E7446ACDDD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEA5B680-A2A5-49E6-B62B-6E7446ACDDD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEA5B680-A2A5-49E6-B62B-6E7446ACDDD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +87,7 @@ Global
 		{AB2C1700-7C2C-4E88-86EA-DCA92A37AF86} = {BD38CF93-4A1B-481F-9F37-553B9341B372}
 		{F6052899-E142-47F7-9E21-A31B9BF3FF1C} = {04B9F2DC-2973-4608-BCA7-F94058DFFEA9}
 		{D96CCC70-E50E-441C-8AC6-681C48DB025F} = {AF79D8CA-DDB6-4775-BA20-59F6B966AFF3}
+		{EEA5B680-A2A5-49E6-B62B-6E7446ACDDD7} = {2DE4F99F-3FA4-40DA-BD8C-92D7A364B603}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C5EE84F1-85C0-4636-8B88-4EA03F9E9BD1}

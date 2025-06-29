@@ -13,9 +13,8 @@ public class PasswordHasherTests
     }
 
     // --- Testes para o método Generate ---
-
-    // Este teste agora cobre null, empty e whitespace, pois Generate lança ArgumentException para todos eles.
     [Theory]
+    [Trait("Category", "Unit")]
     [InlineData(null)]          // Senha nula
     [InlineData("")]            // Senha vazia
     [InlineData("   ")]         // Senha com apenas espaços em branco
@@ -33,6 +32,7 @@ public class PasswordHasherTests
     }
 
     [Fact]
+    [Trait("Category", "Unit")]
     public void Generate_GivenValidPassword_ReturnsNonNullOrEmptyHash()
     {
         // Arrange
@@ -47,6 +47,7 @@ public class PasswordHasherTests
     }
 
     [Fact]
+    [Trait("Category", "Unit")]
     public void Generate_GivenDifferentPasswords_ReturnsDifferentHashes()
     {
         // Arrange
@@ -62,6 +63,7 @@ public class PasswordHasherTests
     }
 
     [Fact]
+    [Trait("Category", "Unit")]
     public void Generate_GivenSamePasswordMultipleTimes_ReturnsDifferentHashesDueToSalt()
     {
         // Arrange
@@ -78,15 +80,14 @@ public class PasswordHasherTests
 
     // --- Testes para o método Verify ---
 
-    // Este teste agora cobre null, empty e whitespace para 'password'.
     [Theory]
+    [Trait("Category", "Unit")]
     [InlineData(null, "valid_hash_placeholder")]        // Senha plaintext nula
     [InlineData("", "valid_hash_placeholder")]          // Senha plaintext vazia
     [InlineData("   ", "valid_hash_placeholder")]       // Senha plaintext com apenas espaços em branco
     public void Verify_GivenNullEmptyOrWhitespacePassword_ThrowsArgumentException(string password, string placeholderHash)
     {
         // Arrange
-        // Geramos um hash válido de uma senha real para o placeholder, pois precisamos de um hash real para o segundo parâmetro
         string hashedPassword = _passwordHasher.Generate("any_real_password_for_hash");
 
         // Act
@@ -98,15 +99,14 @@ public class PasswordHasherTests
            .WithMessage("A senha não pode ser vazia ou consistir apenas em espaços em branco.*");
     }
 
-    // Este teste agora cobre null, empty e whitespace para 'hashedPassword'.
     [Theory]
+    [Trait("Category", "Unit")]
     [InlineData("valid_password_placeholder", null)]           // Hash nulo
     [InlineData("valid_password_placeholder", "")]             // Hash vazio
     [InlineData("valid_password_placeholder", "   ")]          // Hash com apenas espaços em branco
     public void Verify_GivenNullEmptyOrWhitespaceHashedPassword_ThrowsArgumentException(string placeholderPassword, string hashedPassword)
     {
         // Arrange
-        // A senha plaintext real não importa para este teste, usamos um placeholder
         string password = "any_real_password_for_check";
 
         // Act
@@ -119,6 +119,7 @@ public class PasswordHasherTests
     }
 
     [Theory]
+    [Trait("Category", "Unit")]
     [InlineData("senha_secreta_123")]
     [InlineData("minha_senha_complexa!@#")]
     [InlineData("123456")]
@@ -135,6 +136,7 @@ public class PasswordHasherTests
     }
 
     [Theory]
+    [Trait("Category", "Unit")]
     [InlineData("senha_secreta_123", "senha_incorreta_123")]
     [InlineData("minha_senha_complexa!@#", "minha_senha_comlexa!@#")]
     [InlineData("123456", "654321")]
@@ -151,6 +153,7 @@ public class PasswordHasherTests
     }
 
     [Fact]
+    [Trait("Category", "Unit")]
     public void Verify_GivenInvalidHashedPasswordFormat_ThrowsArgumentException()
     {
         // Arrange
