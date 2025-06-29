@@ -1,0 +1,46 @@
+name: .NET CI - Build, Test and Coverage Check
+
+# Gatilho: Roda este workflow para toda Pull Request direcionada à branch 'master'
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Clona o código do repositório para a máquina virtual
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # 2. Configura o ambiente .NET
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x' # Use a versão do seu projeto
+
+    # 3. Restaura as dependências do projeto
+    - name: Restore dependencies
+      run: dotnet restore
+
+    # 4. Compila o projeto
+    - name: Build
+      run: dotnet build --no-restore
+
+    # 5. Roda os testes E GERA o relatório de cobertura
+    #    - O comando --collect gera o relatório no formato cobertura.xml
+    #    - O resultado será salvo dentro de uma pasta com um nome aleatório no diretório TestResults
+    - name: Run tests with code coverage
+      run: dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
+
+    # 6. VERIFICA A COBERTURA e FALHA se for menor que 80%
+    #    - Usa uma Action da comunidade para ler o arquivo de cobertura
+    #    - O parâmetro 'fail_below_min: true' faz o passo falhar se a cobertura for baixa
+    #    - O parâmetro 'thresholds' define o mínimo (80%) e o ideal (90%)
+    - name: Code Coverage Summary and Check
+      uses: irongut/CodeCoverageSummary@v1.3.0
+      with:
+       filename: '**/coverage.cobertura.xml' # <--- NOME CORRETO
+       fail_below_min: true
+       thresholds: '30 90'
