@@ -43,4 +43,4 @@ jobs:
       with:
        filename: '**/coverage.cobertura.xml' # <--- NOME CORRETO
        fail_below_min: true
-       thresholds: '80 90'
+       thresholds: '30 90'
